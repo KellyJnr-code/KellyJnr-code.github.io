@@ -169,6 +169,40 @@
   .skill-cell .kicker{ margin-bottom:6px; font-size:11px; }
   .skill-cell .name{ font-size:15px; font-weight:600; font-family:'Sora',sans-serif; }
 
+  /* RESUME */
+  .resume-top{ padding:30px 34px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .resume-summary{ font-size:15px; color:rgba(255,255,255,0.85); max-width:600px; }
+  .btn-download{
+    display:inline-flex; align-items:center; gap:8px;
+    background:linear-gradient(135deg, #4d5bff, #ec3b53);
+    color:var(--white); text-decoration:none;
+    padding:14px 26px; border-radius:100px;
+    font-size:14px; font-weight:700; white-space:nowrap;
+    transition:opacity .2s;
+  }
+  .btn-download:hover{ opacity:0.88; }
+  .resume-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:760px){ .resume-grid{ grid-template-columns:1fr; } }
+  .resume-card{ padding:28px 30px; }
+  .resume-card h3{ font-family:'Sora',sans-serif; font-size:17px; font-weight:700; margin-bottom:6px; }
+  .resume-card .period{ font-size:12px; color:var(--lav); margin-bottom:14px; letter-spacing:0.04em; }
+  .resume-card ul{ list-style:none; }
+  .resume-card li{
+    font-size:14px; color:rgba(255,255,255,0.82); margin-bottom:10px;
+    padding-left:16px; position:relative;
+  }
+  .resume-card li::before{
+    content:""; position:absolute; left:0; top:8px;
+    width:6px; height:6px; border-radius:50%;
+    background:linear-gradient(135deg, #4d5bff, #ec3b53);
+  }
+  .edu-honor{
+    display:inline-block; margin-top:10px; font-size:12px; font-weight:600;
+    padding:6px 14px; border-radius:100px;
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);
+  }
+  .coursework{ font-size:13px; color:rgba(255,255,255,0.65); margin-top:14px; line-height:1.6; }
+
   /* FOOTER */
   footer{
     margin:20px auto 40px;
@@ -219,6 +253,7 @@
         <li><a href="#about" class="active">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#resume">Resume</a></li>
         <li><a href="#skills">Skills</a></li>
       </ul>
     </nav>
@@ -338,6 +373,50 @@
   </div>
 </section>
 
+<section id="resume">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Resume</div>
+      <h2 class="section-title display">The full picture</h2>
+    </div>
+
+    <div class="resume-top glass">
+      <p class="resume-summary">Aspiring mechatronics engineer with experience in robotics, automation, embedded systems, and systems integration — skilled in Python, sensor integration, and multidisciplinary engineering collaboration, and actively seeking opportunities in autonomous programming, robotics, manufacturing, and self-driving vehicle technologies.</p>
+      <a class="btn-download" href="ISAACACKUNJR_RESUME.pdf" target="_blank" rel="noopener">Download Resume ↓</a>
+    </div>
+
+    <div class="resume-grid">
+      <div class="resume-card glass">
+        <h3>Education</h3>
+        <div class="period">Rochester Institute of Technology · Expected June 2030</div>
+        <p style="font-size:14px; color:rgba(255,255,255,0.82);">B.S. Mechatronics Engineering Technology, Rochester, NY</p>
+        <span class="edu-honor">College of Engineering Technology Honor Roll — Fall 2026</span>
+        <div class="coursework">Relevant coursework: Manufacturing Processes, Introduction to Digital and Microcontroller Systems, Machine Tools Lab, Calculus I & II, Circuits 1, Characterization of Metals Lab, Foundations of Metals.</div>
+      </div>
+
+      <div class="resume-card glass">
+        <h3>RIT ITS — Student Trainee</h3>
+        <div class="period">Rochester, NY · February 2026 – Current</div>
+        <ul>
+          <li>Executed remote imaging and data backup assistance using BeyondTrust, TCTools, and SentinelOne, improving workplace efficiency by 15%.</li>
+          <li>Strengthened problem-solving skills through hands-on hardware repairs and system troubleshooting.</li>
+        </ul>
+      </div>
+
+      <div class="resume-card glass" style="grid-column:1 / -1;">
+        <h3>Council for Scientific and Industrial Research — Intern</h3>
+        <div class="period">Accra, Ghana · June 2023 – July 2023</div>
+        <ul>
+          <li>Used Python-based control systems for robotics prototypes and validated functionality within a 2-week timeline.</li>
+          <li>Collaborated with a multidisciplinary engineering team to design, develop, and test robotics and automation prototypes, contributing to full end-to-end delivery.</li>
+          <li>Integrated sensors and control algorithms to ensure stable system performance.</li>
+          <li>Trained and mentored four young robotics engineers, fostering interest in robotics and programming.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
     <div class="section-head">
@@ -346,11 +425,16 @@
     </div>
     <div class="skill-grid">
       <div class="skill-cell glass"><div class="kicker">Lang</div><div class="name">Python</div></div>
-      <div class="skill-cell glass"><div class="kicker">Lang</div><div class="name">C</div></div>
       <div class="skill-cell glass"><div class="kicker">Lang</div><div class="name">MATLAB</div></div>
       <div class="skill-cell glass"><div class="kicker">Design</div><div class="name">AutoCAD</div></div>
+      <div class="skill-cell glass"><div class="kicker">Tools</div><div class="name">Excel</div></div>
       <div class="skill-cell glass"><div class="kicker">Hardware</div><div class="name">Circuit Design</div></div>
-      <div class="skill-cell glass"><div class="kicker">Hardware</div><div class="name">Sensor Integration</div></div>
+      <div class="skill-cell glass"><div class="kicker">Hardware</div><div class="name">Sensor Fusion</div></div>
+      <div class="skill-cell glass"><div class="kicker">Hardware</div><div class="name">Microcontrollers (Arduino)</div></div>
+      <div class="skill-cell glass"><div class="kicker">Software</div><div class="name">OOP</div></div>
+      <div class="skill-cell glass"><div class="kicker">Software</div><div class="name">Robotics Programming</div></div>
+      <div class="skill-cell glass"><div class="kicker">Lab</div><div class="name">Machine & Metal Lab</div></div>
+      <div class="skill-cell glass"><div class="kicker">Soft Skill</div><div class="name">Team Collaboration</div></div>
     </div>
   </div>
 </section>
