@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isaac Ackun Jr — Mechatronics Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #0a0a24;
+    --blue: #2436c9;
+    --violet: #6a2ec9;
+    --magenta: #c92e8f;
+    --red: #ec3b53;
+    --white: #ffffff;
+    --lav: #c9c8ee;
+    --card: rgba(255,255,255,0.07);
+    --card-border: rgba(255,255,255,0.14);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--ink);
+    color: var(--white);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+  }
+  ::selection{ background:var(--red); color:var(--white); }
+  .display{ font-family:'Sora', sans-serif; font-weight:800; letter-spacing:-0.02em; }
+
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 28px; }
+
+  /* GRADIENT HERO CARD */
+  .hero-card{
+    position:relative;
+    margin:20px auto 0;
+    max-width:1200px;
+    border-radius:28px;
+    overflow:hidden;
+    padding:32px 40px 40px;
+    background:
+      radial-gradient(ellipse 700px 500px at 10% 10%, rgba(60,80,255,0.85), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 90% 85%, rgba(236,59,83,0.85), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 60% 30%, rgba(140,50,210,0.6), transparent 60%),
+      linear-gradient(160deg, #0b0b33, #150a30);
+    min-height:640px;
+    display:flex;
+    flex-direction:column;
+  }
+  .hero-card::after{
+    content:"";
+    position:absolute; inset:0;
+    background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.35) 100%);
+    pointer-events:none;
+  }
+  .noise{
+    position:absolute; inset:0; opacity:0.05; pointer-events:none;
+    background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.4) 0px, transparent 1px, transparent 2px);
+  }
+
+  nav.hero-nav{
+    position:relative; z-index:2;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:8px 4px 0;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand-mark{
+    width:30px; height:30px; border-radius:9px;
+    background:linear-gradient(135deg, #4d5bff, #ec3b53);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Sora',sans-serif; font-weight:800; font-size:14px;
+  }
+  .brand-name{ font-family:'Sora',sans-serif; font-weight:700; font-size:16px; }
+  .hero-links{ display:flex; gap:32px; list-style:none; }
+  .hero-links a{
+    color:rgba(255,255,255,0.75); text-decoration:none; font-size:14px; font-weight:500;
+    transition:color .2s;
+  }
+  .hero-links a:hover, .hero-links a.active{ color:var(--white); font-weight:600; }
+  @media (max-width:640px){ .hero-links{ display:none; } }
+
+  .hero-copy{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; justify-content:center; padding:20px 0; }
+  .eyebrow{
+    font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
+    color:rgba(255,255,255,0.7); margin-bottom:18px; font-weight:600;
+  }
+  .hero-copy h1{
+    font-size:clamp(46px, 7vw, 80px);
+    line-height:0.98;
+    margin-bottom:2px;
+  }
+  .hero-copy h1.big{
+    font-size:clamp(64px, 11vw, 130px);
+    line-height:0.9;
+  }
+  .role-line{
+    margin-top:24px; max-width:520px; font-size:16px; color:rgba(255,255,255,0.82);
+  }
+
+  .hero-bottom{
+    position:relative; z-index:2;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
+    padding-top:28px; margin-top:20px;
+    border-top:1px solid rgba(255,255,255,0.18);
+    font-size:14px; color:rgba(255,255,255,0.8);
+  }
+  .hero-bottom a{ color:rgba(255,255,255,0.8); text-decoration:none; }
+  .hero-bottom a:hover{ color:var(--white); }
+
+  /* SECTIONS */
+  section{ padding:80px 0; }
+  .section-head{ margin-bottom:40px; }
+  .kicker{
+    font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--lav); font-weight:600; margin-bottom:10px;
+  }
+  .section-title{ font-size:clamp(30px,4.4vw,46px); }
+
+  .glass{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:start; }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-text p{ font-size:16px; color:rgba(255,255,255,0.85); margin-bottom:16px; max-width:540px; }
+  .id-card{ padding:26px 28px; }
+  .id-card .kicker{ margin-bottom:16px; }
+  .id-row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size:14px; }
+  .id-row:last-child{ border-bottom:none; }
+  .id-row span:first-child{ color:rgba(255,255,255,0.55); }
+
+  /* PROJECTS */
+  .project-card{ padding:32px 34px; margin-bottom:22px; }
+  .project-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; }
+  .project-title{ font-size:24px; font-family:'Sora',sans-serif; font-weight:700; margin-bottom:6px; }
+  .project-tagline{ font-size:14px; color:var(--lav); }
+  .patch{
+    font-size:11px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+    padding:6px 14px; border-radius:100px;
+    background:linear-gradient(135deg, rgba(77,91,255,0.35), rgba(236,59,83,0.35));
+    border:1px solid rgba(255,255,255,0.2);
+    white-space:nowrap;
+  }
+  .project-body{ margin-top:18px; font-size:15px; color:rgba(255,255,255,0.82); max-width:680px; }
+  .stat-strip{ display:flex; flex-wrap:wrap; gap:28px; margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.12); }
+  .stat-label{ font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.5); }
+  .stat-value{ font-size:14px; font-weight:600; margin-top:4px; }
+
+  /* LEADERSHIP */
+  .lead-item{
+    display:grid; grid-template-columns:130px 1fr; gap:20px;
+    padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .lead-item:last-child{ border-bottom:none; }
+  .lead-org{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--lav); font-weight:600; padding-top:2px; }
+  .lead-role{ font-size:17px; font-weight:700; margin-bottom:4px; font-family:'Sora',sans-serif; }
+  .lead-desc{ font-size:14.5px; color:rgba(255,255,255,0.8); }
+  @media (max-width:560px){ .lead-item{ grid-template-columns:1fr; gap:6px; } }
+
+  /* SKILLS */
+  .skill-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px; }
+  .skill-cell{ padding:20px 18px; text-align:center; }
+  .skill-cell .kicker{ margin-bottom:6px; font-size:11px; }
+  .skill-cell .name{ font-size:15px; font-weight:600; font-family:'Sora',sans-serif; }
+
+  /* FOOTER */
+  footer{
+    margin:20px auto 40px;
+    max-width:1200px;
+    border-radius:28px;
+    position:relative;
+    overflow:hidden;
+    padding:56px 40px 36px;
+    background:
+      radial-gradient(ellipse 600px 400px at 85% 20%, rgba(236,59,83,0.75), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 15% 90%, rgba(60,80,255,0.75), transparent 60%),
+      linear-gradient(160deg, #0b0b33, #150a30);
+  }
+  footer h2{ font-size:clamp(30px,5vw,48px); margin-bottom:16px; font-family:'Sora',sans-serif; font-weight:800; position:relative; z-index:2; }
+  footer p{ font-size:15px; color:rgba(255,255,255,0.8); max-width:460px; margin-bottom:28px; position:relative; z-index:2; }
+  .contact-links{ display:flex; gap:14px; flex-wrap:wrap; position:relative; z-index:2; }
+  .contact-links a{
+    color:var(--white); text-decoration:none;
+    border:1px solid rgba(255,255,255,0.3); border-radius:100px;
+    padding:12px 22px; font-size:13px; font-weight:600;
+    transition:background .2s, border-color .2s;
+  }
+  .contact-links a:hover{ background:rgba(255,255,255,0.15); }
+  .foot-bottom{
+    margin-top:44px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.18);
+    font-size:12px; color:rgba(255,255,255,0.55);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    position:relative; z-index:2;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-in{ opacity:0; transform:translateY(14px); animation:fadeIn .7s ease forwards; }
+  }
+  @keyframes fadeIn{ to{ opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="hero-card fade-in">
+    <div class="noise"></div>
+    <nav class="hero-nav">
+      <div class="brand">
+        <div class="brand-mark">IA</div>
+        <span class="brand-name">Isaac Ackun Jr</span>
+      </div>
+      <ul class="hero-links">
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-copy">
+      <div class="eyebrow">Mechatronics Engineering Technology · RIT · Class of 2029</div>
+      <h1 class="display">Mechatronics</h1>
+      <h1 class="display big">Engineer</h1>
+      <p class="role-line">I build hardware that senses, monitors, and responds — solar power systems, automated environments, and embedded circuits.</p>
+    </div>
+
+    <div class="hero-bottom">
+      <span>Rochester, NY</span>
+      <span>—</span>
+      <a href="mailto:isaac.ackunjnr@gmail.com">isaac.ackunjnr@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">About</div>
+      <h2 class="section-title display">Who I am</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm a Mechatronics Engineering Technology student at RIT, working at the intersection of circuits, code, and physical systems. My projects lean toward hardware that does something useful in the real world — monitoring power, automating environments, and closing the loop between sensor and action.</p>
+        <p>Outside coursework, I've worked on robotics and automation as an intern with the Council for Scientific and Industrial Research in Accra, Ghana, and I stay active in RIT's engineering community through NSBE and OAS leadership, plus day-to-day IT support work on campus.</p>
+      </div>
+      <div class="id-card glass fade-in">
+        <div class="kicker">Field notes</div>
+        <div class="id-row"><span>Languages</span><span>Python · C · MATLAB</span></div>
+        <div class="id-row"><span>Design</span><span>AutoCAD</span></div>
+        <div class="id-row"><span>Domain</span><span>Circuits · Sensors</span></div>
+        <div class="id-row"><span>Orgs</span><span>NSBE · OAS</span></div>
+        <div class="id-row"><span>Campus role</span><span>RIT ITS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Projects</div>
+      <h2 class="section-title display">What I've built</h2>
+    </div>
+
+    <div class="project-card glass fade-in">
+      <div class="project-top">
+        <div>
+          <div class="project-title">Project Auria</div>
+          <div class="project-tagline">Solar-powered, GPS-equipped backpack for the RIT NSBE Imagine RIT exhibit</div>
+        </div>
+        <div class="patch">Hardware · Embedded</div>
+      </div>
+      <div class="project-body">
+        Built with the RIT NSBE Imagine RIT Project Committee, Auria is a solar-powered backpack designed to combat power access issues in areas with limited electricity, with an onboard GPS tracker for navigation. Sustainability drove every design choice, from solar charging to biodegradable backpack materials. I worked on the microelectronics team, wiring the solar panels to the battery through a TP4056 charging module and adding a boost converter to feed a wireless charger and USB port, while an ESP32 read live sensor data off the solar input to monitor the system. I later presented Auria as an NSBE exhibitor at Imagine RIT, walking attendees through the build.
+      </div>
+      <div class="stat-strip">
+        <div><div class="stat-label">Role</div><div class="stat-value">Microelectronics Team</div></div>
+        <div><div class="stat-label">System</div><div class="stat-value">Solar Charging + GPS</div></div>
+        <div><div class="stat-label">Hardware</div><div class="stat-value">ESP32, TP4056, Boost Converter</div></div>
+      </div>
+    </div>
+
+    <div class="project-card glass fade-in">
+      <div class="project-top">
+        <div>
+          <div class="project-title">Automated Greenhouse System</div>
+          <div class="project-tagline">Closed-loop environmental control built on Arduino</div>
+        </div>
+        <div class="patch">Automation · Sensors</div>
+      </div>
+      <div class="project-body">
+        A class project built around an Arduino board that monitors temperature, light, motion, and water level, and reacts to what it senses instead of just logging it. When temperature drifts outside range, a fan kicks on; motion readings trigger an LED; and light sensor data adjusts an internal lamp, turning it on, dimming it, or shutting it off to hold consistent growing conditions. Water level is tracked as an alert reading to flag when attention is needed.
+      </div>
+      <div class="stat-strip">
+        <div><div class="stat-label">Role</div><div class="stat-value">System Design</div></div>
+        <div><div class="stat-label">Sensors</div><div class="stat-value">Temp, Light, Motion, Water Level</div></div>
+        <div><div class="stat-label">Hardware</div><div class="stat-value">Arduino, Fan, LED, Lamp</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Leadership</div>
+      <h2 class="section-title display">Beyond the lab</h2>
+    </div>
+    <div class="glass" style="padding:8px 34px;">
+      <div class="lead-item">
+        <div class="lead-org">OAS</div>
+        <div>
+          <div class="lead-role">Vice President</div>
+          <div class="lead-desc">Leading organizational initiatives for the Organization of African Students, supporting programming that connects members to West African culture and community on campus.</div>
+        </div>
+      </div>
+      <div class="lead-item">
+        <div class="lead-org">NSBE</div>
+        <div>
+          <div class="lead-role">Fundraising Chair</div>
+          <div class="lead-desc">Manage chapter finances and lead fundraising efforts, including building the chapter's 2026–2027 budget template and planning a fall charity field day event.</div>
+        </div>
+      </div>
+      <div class="lead-item">
+        <div class="lead-org">RIT ITS</div>
+        <div>
+          <div class="lead-role">IT Support</div>
+          <div class="lead-desc">Providing IT support services across campus — troubleshooting, systems, and hands-on technical problem solving.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Toolkit</div>
+      <h2 class="section-title display">What I work with</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-cell glass"><div class="kicker">Lang</div><div class="name">Python</div></div>
+      <div class="skill-cell glass"><div class="kicker">Lang</div><div class="name">C</div></div>
+      <div class="skill-cell glass"><div class="kicker">Lang</div><div class="name">MATLAB</div></div>
+      <div class="skill-cell glass"><div class="kicker">Design</div><div class="name">AutoCAD</div></div>
+      <div class="skill-cell glass"><div class="kicker">Hardware</div><div class="name">Circuit Design</div></div>
+      <div class="skill-cell glass"><div class="kicker">Hardware</div><div class="name">Sensor Integration</div></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2>Let's build<br>something.</h2>
+  <p>Open to internships, collaborations, and conversations about mechatronics, embedded systems, or engineering community work.</p>
+  <div class="contact-links">
+    <a href="mailto:isaac.ackunjnr@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/isaac-kelly-ackun-jr-a05407252" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="foot-bottom">
+    <span>ISAAC ACKUN JR — MECHATRONICS ENG. TECH — RIT</span>
+    <span>CLASS OF 2029</span>
+  </div>
+</footer>
+
+</body>
+</html>
